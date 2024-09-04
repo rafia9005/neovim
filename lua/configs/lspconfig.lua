@@ -60,6 +60,22 @@ lspconfig.astro.setup {
   filetypes = { "astro" },
 }
 
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        features = "all",
+      },
+      procMacro = {
+        enable = true,
+      },
+    },
+  },
+}
+
 -- typescript
 lspconfig.tsserver.setup {
   on_attach = on_attach,

@@ -12,6 +12,7 @@ local options = {
     blade = { "blade-formatter" },
     golang = { "goimports" },
     cpp = { "clang-format" },
+    rust = { "rustfmt" },
   },
 
   format_on_save = {
