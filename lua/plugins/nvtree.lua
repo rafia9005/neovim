@@ -12,20 +12,20 @@ return {
           indent_markers = {
             enable = true,
             inline_arrows = true,
-            -- icons = {
-            --   corner = "└", -- Icon for the last item
-            --   edge = "│",   -- Icon for the edge
-            --   item = "│",   -- Icon for items
-            --   bottom = "─",  -- Icon for the bottom
-            --   none = " ",    -- Icon when there are no items
-            -- },
             icons = {
-              corner = "•",
-              edge = "•",
-              item = "•",
-              bottom = "•",
-              none = " ",
+              corner = "└", -- Icon for the last item
+              edge = "│", -- Icon for the edge
+              item = "│", -- Icon for items
+              bottom = "─", -- Icon for the bottom
+              none = " ", -- Icon when there are no items
             },
+            -- icons = {
+            --   corner = "•",
+            --   edge = "•",
+            --   item = "•",
+            --   bottom = "•",
+            --   none = " ",
+            -- },
           },
           icons = {
             web_devicons = {
