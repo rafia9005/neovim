@@ -15,7 +15,7 @@ M.ui = {
 }
 
 M.ui.tabufline = {
-  enabled = true,
+  enabled = false,
 }
 
 return M
