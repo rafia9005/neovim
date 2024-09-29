@@ -5,43 +5,60 @@ return {
   config = function()
     require("telescope").setup {
       defaults = {
-        prompt_prefix = " ",
+        prompt_prefix = "> ",
         selection_caret = "➜ ",
-        layout_strategy = "flex",
+        layout_strategy = "horizontal",
         layout_config = {
-          horizontal = { width = 0.75, height = 0.95, preview_width = 0.6 },
-          vertical = { width = 0.9, height = 0.95, preview_height = 0.5 },
-          flex = { flip_columns = 130 },
+          horizontal = { width = 0.75, preview_width = 0.5 },
+          vertical = { width = 0.9, preview_height = 0.5 },
         },
-        sorting_strategy = "ascending",
+        sorting_strategy = "descending",
         file_ignore_patterns = { ".git/", "node_modules/", "*.o", "*.out", "*.class" },
         color_devicons = true,
       },
       pickers = {
         find_files = {
-          theme = "dropdown",
-          previewer = false,
-          hidden = true,
+          theme = nil,
+          previewer = true,
+          hidden = false,
         },
         live_grep = {
-          theme = "dropdown",
-          additional_args = function(opts)
-            return { "--hidden" }
-          end,
+          theme = nil,
         },
         buffers = {
-          theme = "ivy",
-          sort_lastused = true,
+          theme = nil,
+          sort_lastused = false,
         },
         help_tags = {
-          theme = "dropdown",
+          theme = nil,
         },
       },
     }
 
-    vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>lua builtin.find_files()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>lua builtin.live_grep()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>lua builtin.buffers()<CR>", { noremap = true, silent = true })
-    vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>lua builtin.help_tags()<CR>", { noremap = true, silent = true })
+    local builtin = require "telescope.builtin"
+    vim.api.nvim_set_keymap(
+      "n",
+      "<leader>ff",
+      "<cmd>lua require('telescope.builtin').find_files()<CR>",
+      { noremap = true, silent = true }
+    )
+    vim.api.nvim_set_keymap(
+      "n",
+      "<leader>fg",
+      "<cmd>lua require('telescope.builtin').live_grep()<CR>",
+      { noremap = true, silent = true }
+    )
+    vim.api.nvim_set_keymap(
+      "n",
+      "<leader>fb",
+      "<cmd>lua require('telescope.builtin').buffers()<CR>",
+      { noremap = true, silent = true }
+    )
+    vim.api.nvim_set_keymap(
+      "n",
+      "<leader>fh",
+      "<cmd>lua require('telescope.builtin').help_tags()<CR>",
+      { noremap = true, silent = true }
+    )
   end,
 }

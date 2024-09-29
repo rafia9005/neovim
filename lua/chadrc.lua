@@ -2,7 +2,7 @@
 local M = {}
 
 M.ui = {
-  theme = "tokyonight",
+  theme = "solarized_osaka",
   statusline = {
     theme = "minimal",
     separator_style = "default",
