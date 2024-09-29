@@ -4,9 +4,8 @@ local M = {}
 M.ui = {
   theme = "solarized_osaka",
   statusline = {
-    theme = "minimal",
-    separator_style = "default",
-    enabled = false,
+    theme = "vscode",
+    separator_style = "round",
   },
   hl_override = {
     Comment = { italic = true },
