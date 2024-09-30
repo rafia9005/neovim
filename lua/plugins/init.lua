@@ -12,6 +12,7 @@ return {
     config = function()
       require "plugins.configs.nvim-tree"
     end,
+    event = { "BufWinEnter", "BufReadPre" },
   },
   {
     "akinsho/bufferline.nvim",
