@@ -40,7 +40,7 @@ require("nvim-tree").setup {
         folder_arrow = true,
         git = true,
         modified = true,
-        hidden = true,
+        hidden = false,
         diagnostics = true,
         bookmarks = true,
       },
@@ -62,9 +62,6 @@ require("nvim-tree").setup {
         },
       },
     },
-  },
-  filters = {
-    dotfiles = false,
   },
   hijack_netrw = true,
 }
