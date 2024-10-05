@@ -6,28 +6,32 @@ local lspconfig = require "lspconfig"
 local servers = {
   "html",
   "cssls",
-  "clangd",
   "gopls",
   "glint",
   "pyright",
   "intelephense",
-  "svlangserver",
-  "intelephense",
-  "gopls",
+  -- Uncomment these if you want to use them
   -- "stimulus-language-server",
-  -- "vue-language-server"
+  -- "vue-language-server",
   -- "svelte-language-server",
 }
 
--- lsps with default config
+-- Setup LSP servers with default config
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    on_init = on_init,
-    capabilities = capabilities,
-  }
+  local ok, err = pcall(function()
+    lspconfig[lsp].setup {
+      on_attach = on_attach,
+      on_init = on_init,
+      capabilities = capabilities,
+    }
+  end)
+
+  if not ok then
+    print("Error setting up LSP for " .. lsp .. ": " .. err)
+  end
 end
 
+-- Prisma Language Server
 lspconfig.prismals.setup {
   cmd = { "prisma-language-server", "--stdio" },
   filetypes = { "prisma" },
@@ -38,6 +42,7 @@ lspconfig.prismals.setup {
   },
 }
 
+-- Svelte Language Server
 lspconfig.svelte.setup {
   cmd = { "svelteserver", "--stdio" },
   filetypes = { "svelte" },
@@ -55,11 +60,13 @@ lspconfig.svelte.setup {
   },
 }
 
+-- Astro Language Server
 lspconfig.astro.setup {
-  cmd = { "astro-language-server", "--studio" },
+  cmd = { "astro-language-server", "--stdio" },
   filetypes = { "astro" },
 }
 
+-- Rust Analyzer
 lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
   on_init = on_init,
@@ -76,9 +83,10 @@ lspconfig.rust_analyzer.setup {
   },
 }
 
--- typescript
-lspconfig.ts_ls.setup {
+-- TypeScript Language Server
+lspconfig.tsserver.setup {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
 }
+

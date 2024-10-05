@@ -1,41 +1,39 @@
 return {
+  -- telescope
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      require "plugins.configs.telescope"
+      require "plugins.configs.plugins.telescope"
     end,
   },
+  -- nvim tree
   {
     "kyazdani42/nvim-tree.lua",
     config = function()
-      require "plugins.configs.nvim-tree"
+      require "plugins.configs.plugins.nvim-tree"
     end,
     event = { "BufWinEnter", "BufReadPre" },
   },
+  -- buffer line
   {
     "akinsho/bufferline.nvim",
     event = "BufReadPre",
     config = function()
-      require "plugins.configs.bufferline"
+      require "plugins.configs.plugins.bufferline"
     end,
   },
+  -- lauline
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require "plugins.configs.lualine"
+      require "plugins.configs.plugins.lualine"
     end,
     event = "VeryLazy",
   },
-  {
-    "stevearc/conform.nvim",
-    event = "BufWritePre",
-    config = function()
-      require "configs.conform"
-    end,
-  },
+  -- lspconfig
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -43,6 +41,18 @@ return {
       require "configs.lspconfig"
     end,
   },
+  -- noice
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("plugins.configs.plugins.noice").setup()
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+  },
+
   {
     "williamboman/mason.nvim",
     opts = {
